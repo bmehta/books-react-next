@@ -3,3 +3,4 @@
 - Material-UI
 - Org/api/structure of the project
 - Books API
+- Editing books
