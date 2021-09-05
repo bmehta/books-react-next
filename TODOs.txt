@@ -1,10 +1,10 @@
 
 TODO:
 - Org/api/structure of the project - move book[id] to add/edit
-- Typescript
+*- Typescript
 - Material-UI
 - Books API
-- Editing books
+*- Editing books
 
 Done:
 *- Firebase authentication
