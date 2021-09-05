@@ -14,6 +14,7 @@ const Search = () => {
         setSearchResults([{id: 'id1', title: 'title1'}, {id: 'id2', title: 'title2'}]);
         fire.firestore()
             .collection('books')
+            .where("title", "==", searchTerm )
             .onSnapshot(snap => {
                 const books = snap.docs.map(doc => ({
                     id: doc.id,
@@ -21,11 +22,11 @@ const Search = () => {
                 }));
                 setSearchResults(books)
             });
-    }
+    };
     return (
         <div>
             <h2>Add Book</h2>
-            <label for="site-search">Search books</label>
+            <label htmlFor="site-search">Search books</label>
             <input type="search" id="site-search" onChange={({target}) => setSearchTerm(target.value)}/>
 
             <button onClick={handleSearch}>Search</button>
