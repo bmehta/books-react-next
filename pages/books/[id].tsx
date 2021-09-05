@@ -1,12 +1,28 @@
 import React, { useState } from 'react';
-import fire from '../../config/fire-config'
-import Link from 'next/link'
+import fire from '../../config/fire-config';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Book = (props): JSX.Element => {
+    const router = useRouter();
     const [ title, setTitle ] = useState(props.book.title);
     const [ review, setReview ] = useState(props.book.review);
 
     const [isEditing, setIsEditing] = useState(false);
+
+    const handleDelete = async (event) => {
+        event.preventDefault();
+        console.log({
+            "title": title,
+            "review": review
+        });
+
+        await fire.firestore()
+            .collection('books')
+            .doc(props.book.id)
+            .delete();
+        router.push("/");
+    };
 
     const handleSave = async (event) => {
         event.preventDefault();
@@ -31,6 +47,7 @@ const Book = (props): JSX.Element => {
                         {review}
                     </p>
                     <button onClick={() => setIsEditing(true)}>Edit</button>
+                    <button onClick={handleDelete}>Delete</button>
                 </div>
             :
                 <div>
