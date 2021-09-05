@@ -1,6 +1,7 @@
-import fire from '../../config/fire-config';
+import fire from '../../config/fire-config'
 import Link from 'next/link'
-const Book = (props) => {
+
+const Book = (props): JSX.Element => {
 
     return (
         <div>
@@ -15,7 +16,7 @@ const Book = (props) => {
     )
 };
 export const getServerSideProps = async ({ query }) => {
-    const content = {};
+    const content = { title: null, review: null };
     await fire.firestore()
         .collection('books')
         .doc(query.id)

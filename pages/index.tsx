@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import fire from '../config/fire-config';
-import CreateBook from '../components/CreateBook';
 
 
 const Home = () => {
@@ -60,16 +59,19 @@ const Home = () => {
                 :
                 <div>
                     <button onClick={handleLogout}>Logout</button>
+                    <Link href="/books/add">
+                        <a> Add a Book</a>
+                    </Link>
                     <ul>
                     {books.map(book =>
                         <li key={book.id}>
-                            <Link href="/book/[id]" as={'/book/' + book.id}>
+                            <Link href="/books/[id]" as={'/books/' + book.id}>
                                 <a>{book.title}</a>
                             </Link>
                         </li>
                     )}
                     </ul>
-                    <CreateBook />
+
                 </div>
             }
 
