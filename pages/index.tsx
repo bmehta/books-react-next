@@ -44,7 +44,7 @@ const Home = () => {
             <Head>
                 <title>Binita's book app: Made with React, Next and Firebase</title>
             </Head>
-            <h1>Books! A persons best friends</h1>
+            <h1>Books! A person's best friends</h1>
             {notification}
             {!loggedIn
                 ?
