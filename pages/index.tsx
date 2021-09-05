@@ -62,6 +62,9 @@ const Home = () => {
                     <Link href="/books/add">
                         <a> Add a Book</a>
                     </Link>
+                    <Link href="/books/search">
+                        <a> Search</a>
+                    </Link>
                     <ul>
                     {books.map(book =>
                         <li key={book.id}>
