@@ -60,10 +60,10 @@ const Home = () => {
                 <div>
                     <button onClick={handleLogout}>Logout</button>
                     <Link href="/books/add">
-                        <a> Add a Book</a>
+                        <a>Add a Book</a>
                     </Link>
                     <Link href="/books/search">
-                        <a> Search</a>
+                        <a>Search</a>
                     </Link>
                     <ul>
                     {books.map(book =>
