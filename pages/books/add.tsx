@@ -3,12 +3,28 @@ import fire from '../../config/fire-config';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+export interface IBook {
+    id: string
+    volumeInfo: {
+        title: string,
+        imageLinks: {
+            smallThumbnail: string
+        }
+        previewLink: string
+    }
+}
+
+export interface IBooks {
+    items: IBook[]
+
+}
+
 const Add = () => {
     const router = useRouter();
     const [title, setTitle] = useState('');
     const [review, setReview] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
-    const [books, setBooks] = useState([]);
+    const [books, setBooks] = useState<IBooks>();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -30,8 +46,8 @@ const Add = () => {
         if (searchTerm && searchTerm.trim() !== '') {
             const googleApiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
             const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&projection=lite&maxResults=10&key=${googleApiKey}` );
-            const books = await res.json();
-            setBooks(books.items);
+            const books = await res.json() as IBooks;
+            setBooks(books);
         }
 
     }
@@ -42,7 +58,7 @@ const Add = () => {
                 <input type="text" value={searchTerm} onChange={handleSearch}/>
             </div>
             <ul>
-                {books?.map(book =>
+                {books.items?.map(book =>
                     <li key={book.id}>
 
                         <Link href={book.volumeInfo.previewLink} target="_blank">
