@@ -26,19 +26,19 @@ const Add = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [books, setBooks] = useState<IBooks>();
 
-    const handleSubmit = async (event) => {
+    const handleAdd = async (event, book) => {
         event.preventDefault();
-        console.log({
-            "title": title,
-            "review": review
-        });
+        console.log(JSON.stringify(book));
+
+        const volumeId = book.id;
+        const { authors = [], previewLink = '', publisher ='', imageLinks: { smallThumbnail: thumbnail = ''} = {}, title = '' } = book.volumeInfo;
+
         await fire.firestore()
             .collection('books')
-            .add({ title, review });
-        setTitle('');
-        setReview('');
-        router.push("/");
+            .add({ volumeId, authors, previewLink, publisher, thumbnail, title });
+
     };
+
     const handleSearch = async (event) => {
         event.preventDefault();
         setSearchTerm(event.target.value);
@@ -49,11 +49,10 @@ const Add = () => {
             const books = await res.json() as IBooks;
             setBooks(books);
         }
-
     }
     return (
         <div>
-            <h2>Search for a book to add</h2>
+            <h2>Search for a book you have read</h2>
             <div>
                 <input type="text" value={searchTerm} onChange={handleSearch}/>
             </div>
@@ -67,23 +66,10 @@ const Add = () => {
                                 <span>{book.volumeInfo?.title}</span>
                             </div>
                         </Link>
+                        <button onClick={(event) => handleAdd(event, book)}>Add</button>
                     </li>
                 )}
             </ul>
-            <h2>Add Book</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    Title<br />
-                    <input type="text" value={title}
-                           onChange={({target}) => setTitle(target.value)} />
-                </div>
-                <div>
-                    Review<br />
-                    <textarea value={review}
-                              onChange={({target}) => setReview(target.value)} />
-                </div>
-                <button type="submit">Save</button>
-            </form>
         </div>
     )
 };

@@ -64,13 +64,10 @@ const Home = () => {
                 <div>
                     <button onClick={handleLogout}>Logout</button>
                     &nbsp;&nbsp;
-                    <Link href="/books/add">
-                        <a>Add a Book</a>
-                    </Link>
-                    &nbsp;&nbsp;
                     <Link href="/books/search">
-                        <a>Search</a>
+                        <a>Search and Add</a>
                     </Link>
+                    <h1>Books you have read</h1>
                     <ul>
                     {books.map(book =>
                         <li key={book.id}>
