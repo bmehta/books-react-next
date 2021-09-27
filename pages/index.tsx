@@ -65,7 +65,7 @@ const Home = () => {
                 <div>
                     <button onClick={handleLogout}>Logout</button>
                     &nbsp;&nbsp;
-                    <Link href="/books/search">
+                    <Link href="/books/add">
                         <a>Search and Add</a>
                     </Link>
                     <h1>Books I have read</h1>

@@ -2,36 +2,26 @@ import React, { useState } from 'react';
 import fire from '../../config/fire-config';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Book from '../../components/Book';
 
 export interface IBook {
-    id: string
-    volumeInfo: {
-        title: string,
-        imageLinks: {
-            smallThumbnail: string
-        }
-        previewLink: string
-    }
-}
-
-export interface IBooks {
-    items: IBook[]
-
+    id: string,
+    previewLink: string,
+    thumbnail: string,
+    title: string
 }
 
 const Add = () => {
-    const router = useRouter();
-    const [title, setTitle] = useState('');
-    const [review, setReview] = useState('');
+
     const [searchTerm, setSearchTerm] = useState('');
-    const [books, setBooks] = useState<IBooks>();
+    const [books, setBooks] = useState<IBook[]>([]);
 
     const handleAdd = async (event, book) => {
         event.preventDefault();
         console.log(JSON.stringify(book));
 
         const volumeId = book.id;
-        const { authors = [], previewLink = '', publisher ='', imageLinks: { smallThumbnail: thumbnail = ''} = {}, title = '' } = book.volumeInfo;
+        const { authors = [], previewLink = '', publisher ='', thumbnail = '', title = '' } = book;
 
         await fire.firestore()
             .collection('books')
@@ -46,7 +36,17 @@ const Add = () => {
         if (searchTerm && searchTerm.trim() !== '') {
             const googleApiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
             const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&projection=lite&maxResults=10&key=${googleApiKey}` );
-            const books = await res.json() as IBooks;
+            const responseBooks = await res.json();
+            const books = responseBooks.items.map((book) => {
+                return  {
+                    id: book.id,
+                    authors: book.volumeInfo.authors,
+                    previewLink: book.volumeInfo.previewLink,
+                    publisher: book.volumeInfo.publisher,
+                    title: book.volumeInfo.title,
+                    thumbnail: book.volumeInfo.imageLinks?.smallThumbnail
+                }
+            });
             setBooks(books);
         }
     }
@@ -57,15 +57,9 @@ const Add = () => {
                 <input type="text" value={searchTerm} onChange={handleSearch}/>
             </div>
             <ul>
-                {books?.items?.map(book =>
+                {books.map(book =>
                     <li key={book.id}>
-
-                        <Link href={book.volumeInfo.previewLink}>
-                            <div>
-                                <img src={book.volumeInfo?.imageLinks?.smallThumbnail}></img>
-                                <span>{book.volumeInfo?.title}</span>
-                            </div>
-                        </Link>
+                        <Book book={book}/>
                         <button onClick={(event) => handleAdd(event, book)}>Add</button>
                     </li>
                 )}
