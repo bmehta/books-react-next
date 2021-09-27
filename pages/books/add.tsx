@@ -3,6 +3,7 @@ import fire from '../../config/fire-config';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+
 const Add = () => {
     const router = useRouter();
     const [title, setTitle] = useState('');
