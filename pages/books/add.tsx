@@ -58,7 +58,7 @@ const Add = () => {
                 <input type="text" value={searchTerm} onChange={handleSearch}/>
             </div>
             <ul>
-                {books.items?.map(book =>
+                {books?.items?.map(book =>
                     <li key={book.id}>
 
                         <Link href={book.volumeInfo.previewLink}>
