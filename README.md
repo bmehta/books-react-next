@@ -1,5 +1,5 @@
 # books-react-next
-Project to manage books with React, Next, Firestore and Google Books API
+Project to manage books with React, Next, Firestore/Firebase and Google Books API
 
 # Demo
 https://books-bmehta.vercel.app/
@@ -11,4 +11,4 @@ https://books-bmehta.vercel.app/
 - This will create a .env file on your local with variables that get exposed with process.env
 - Run `npm run build`
 - Run `'npm run dev`
-- When a github push happens, it fires off a deployment process within Vercel
+- When a github push happens, it fires off a deployment process within Vercel, the app can be then accessed at the demo url above
