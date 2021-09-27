@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import fire from '../config/fire-config';
+import Book from '../components/Book';
 
 
 const Home = () => {
@@ -67,17 +68,14 @@ const Home = () => {
                     <Link href="/books/search">
                         <a>Search and Add</a>
                     </Link>
-                    <h1>Books you have read</h1>
+                    <h1>Books I have read</h1>
                     <ul>
                     {books.map(book =>
                         <li key={book.id}>
-                            <Link href="/books/[id]" as={'/books/' + book.id}>
-                                <a>{book.title}</a>
-                            </Link>
+                            <Book book={book}></Book>
                         </li>
                     )}
                     </ul>
-
                 </div>
             }
 

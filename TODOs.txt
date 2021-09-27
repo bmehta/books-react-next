@@ -3,10 +3,11 @@ TODO:
 - Org/api/structure of the project - move book[id] to add/edit
 *- Typescript
 - Material-UI
-- finish search and add
+*- finish search and add
 - decide how to store searched books so tehy can be referenced in the listing - either by id or just store all params and access statically
 *- Books API - key
 *- Editing books
+- disable adding duplicate books
 
 Done:
 *- Firebase authentication

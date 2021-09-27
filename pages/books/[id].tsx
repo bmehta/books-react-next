@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 const Book = (props): JSX.Element => {
     const router = useRouter();
     const [ title, setTitle ] = useState(props.book.title);
-    const [ review, setReview ] = useState(props.book.review);
+    const [ authors, setAuthors ] = useState(props.book.authors);
 
     const [isEditing, setIsEditing] = useState(false);
 
@@ -14,7 +14,7 @@ const Book = (props): JSX.Element => {
         event.preventDefault();
         console.log({
             "title": title,
-            "review": review
+            "authors": authors
         });
 
         await fire.firestore()
@@ -28,13 +28,13 @@ const Book = (props): JSX.Element => {
         event.preventDefault();
         console.log({
             "title": title,
-            "review": review
+            "authors": authors
         });
 
         await fire.firestore()
             .collection('books')
             .doc(props.book.id)
-            .update({title, review});
+            .update({title, authors});
         setIsEditing(false)
     };
 
@@ -44,7 +44,7 @@ const Book = (props): JSX.Element => {
                 <div>
                     <h2>{title}</h2>
                     <p>
-                        {review}
+                        {authors}
                     </p>
                     <button onClick={() => setIsEditing(true)}>Edit</button>
                     <button onClick={handleDelete}>Delete</button>
@@ -52,7 +52,7 @@ const Book = (props): JSX.Element => {
             :
                 <div>
                     <input type="text" value={title} onChange={({target}) => setTitle(target.value)}/>
-                    <textarea value={review} onChange={({target}) => setReview(target.value)}/>
+                    <textarea value={authors} onChange={({target}) => setAuthors(target.value)}/>
                     <button onClick={handleSave}>Save</button>
                 </div>
             }
@@ -64,21 +64,21 @@ const Book = (props): JSX.Element => {
     )
 };
 export const getServerSideProps = async ({ query }) => {
-    const content = { title: null, review: null };
+    const content = { title: null, authors: [] };
     await fire.firestore()
         .collection('books')
         .doc(query.id)
         .get()
         .then(result => {
+            content['authors'] = result.data().authors;
             content['title'] = result.data().title;
-            content['review'] = result.data().review;
         });
     return {
         props: {
             book: {
                 id: query.id,
                 title: content.title,
-                review: content.review
+                authors: content.authors
             }
         }
     }
