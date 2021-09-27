@@ -52,7 +52,7 @@ const Add = () => {
     }
     return (
         <div>
-            <h2>Search for a book you have read</h2>
+            <h2>Search for a Suggestion</h2>
             <div>
                 <input type="text" value={searchTerm} onChange={handleSearch}/>
             </div>

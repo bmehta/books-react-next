@@ -60,15 +60,16 @@ const Home = () => {
                     <Link href="/users/login">
                         <a> Login</a>
                     </Link>
+                    <div>(Use test@test.com/test123 to log on as guest)</div>
                 </div>
                 :
                 <div>
                     <button onClick={handleLogout}>Logout</button>
                     &nbsp;&nbsp;
                     <Link href="/books/add">
-                        <a>Search and Add</a>
+                        <a>Add a Suggestion</a>
                     </Link>
-                    <h1>Books I have read</h1>
+                    <h1>Books Suggestions</h1>
                     <ul>
                     {books.map(book =>
                         <li key={book.id}>

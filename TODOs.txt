@@ -4,10 +4,14 @@ TODO:
 *- Typescript
 - Material-UI
 *- finish search and add
-- decide how to store searched books so tehy can be referenced in the listing - either by id or just store all params and access statically
+*- decide how to store searched books so tehy can be referenced in the listing - either by id or just store all params and access statically
 *- Books API - key
 *- Editing books
 - disable adding duplicate books
+- is search.tsx needed anymore? same with CreateBook.tsx
+- Make the model as book suggestions instead of "Books I read"?
+- Add auth on all pages
+- Add restrictions for test@test.com on all pages
 
 Done:
 *- Firebase authentication
