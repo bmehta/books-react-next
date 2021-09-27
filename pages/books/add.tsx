@@ -3,6 +3,9 @@ import fire from '../../config/fire-config';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
+export interface IBooks {
+    items: any
+}
 
 const Add = () => {
     const router = useRouter();
@@ -31,7 +34,7 @@ const Add = () => {
         if (searchTerm && searchTerm.trim() !== '') {
             const googleApiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
             const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&projection=lite&maxResults=10&key=${googleApiKey}` );
-            const books = await res.json();
+            const books : IBooks[] = await res.json();
             setBooks(books);
         }
 
