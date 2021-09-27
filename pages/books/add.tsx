@@ -3,10 +3,6 @@ import fire from '../../config/fire-config';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export interface IBooks {
-    items: any
-}
-
 const Add = () => {
     const router = useRouter();
     const [title, setTitle] = useState('');
@@ -34,8 +30,8 @@ const Add = () => {
         if (searchTerm && searchTerm.trim() !== '') {
             const googleApiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
             const res = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&projection=lite&maxResults=10&key=${googleApiKey}` );
-            const books : IBooks[] = await res.json();
-            setBooks(books);
+            const books = await res.json();
+            setBooks(books.items);
         }
 
     }
@@ -46,7 +42,7 @@ const Add = () => {
                 <input type="text" value={searchTerm} onChange={handleSearch}/>
             </div>
             <ul>
-                {books?.items?.map(book =>
+                {books?.map(book =>
                     <li key={book.id}>
 
                         <Link href={book.volumeInfo.previewLink} target="_blank">
