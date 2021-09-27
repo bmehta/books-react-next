@@ -61,7 +61,7 @@ const Add = () => {
                 {books.items?.map(book =>
                     <li key={book.id}>
 
-                        <Link href={book.volumeInfo.previewLink} target="_blank">
+                        <Link href={book.volumeInfo.previewLink}>
                             <div>
                                 <img src={book.volumeInfo?.imageLinks?.smallThumbnail}></img>
                                 <span>{book.volumeInfo?.title}</span>
