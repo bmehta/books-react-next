@@ -43,6 +43,10 @@ const Home = () => {
         <div>
             <Head>
                 <title>Binita's book app: Made with React, Next and Firebase</title>
+                <meta
+                    name="viewport"
+                    content="minimum-scale=1, initial-scale=1, width=device-width"
+                />
             </Head>
             <h1>Books! A person's best friends</h1>
             {notification}
