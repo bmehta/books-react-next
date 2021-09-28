@@ -54,14 +54,11 @@ const Add = () => {
             <div>
                 <input type="text" value={searchTerm} onChange={handleSearch}/>
             </div>
-            <ul>
+            <div>
                 {books.map(book =>
-                    <li key={book.id}>
-                        <Book book={book} showAddAction="true"/>
-                        <button onClick={(event) => handleAdd(event, book)}>Add</button>
-                    </li>
+                    <Book key={book.id} book={book} showAddAction="true"/>
                 )}
-            </ul>
+            </div>
         </div>
     )
 };
