@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import fire from '../../components/Fire';
 
 import { useRouter } from 'next/router'
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [notify, setNotification] = useState('');
+    const [notification, setNotification] = useState('');
     const router = useRouter();
     const handleLogin = (e) => {
         e.preventDefault();
@@ -15,27 +18,45 @@ const Login = () => {
                 console.log(err.code, err.message);
                 setNotification(err.message);
                 setTimeout(() => {
-                    setNotification('')
+                    setNotification('Sign in failed')
                 }, 2000)
             });
         setUsername('');
         setPassword('');
         router.push("/");
     };
+
     return (
-        <div>
-            <h1>Login</h1>
-            {notify}
-            <form onSubmit={handleLogin}>
-                Email<input type="text" value={username}
-                            onChange= {({target}) => setUsername(target.value)} />
-                <br />
-                Password<input type="password" value={password}
-                               onChange={({target}) => setPassword(target.value)} />
-                <br />
-                <button type="submit">Login</button>
-            </form>
-        </div>
+        <Box
+            component="form"
+            sx={{
+                '& .MuiTextField-root': { m: 1, width: '25ch' },
+            }}
+            noValidate
+            autoComplete="off"
+        >
+            <div>
+                <TextField
+                    required
+                    id="outlined-required"
+                    label="User"
+                    onBlur = {({target}) => setUsername(target.value)}
+                />
+            </div>
+            <div>
+                <TextField
+                    required
+                    id="outlined-password-input"
+                    label="Password"
+                    type="password"
+                    autoComplete="current-password"
+                    onBlur={({target}) => setPassword(target.value)}
+                />
+            </div>
+            <div>
+                <Button onClick={handleLogin} variant="contained" style={{marginLeft: "10px"}}>Login</Button>
+            </div>
+        </Box>
     )
 };
 export default Login

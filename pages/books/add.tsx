@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import BookList from '../../components/BookList';
 import Link from 'next/link';
 import fire from '../../components/Fire';
+import Typography from '@mui/material/Typography';
+import TextField from '@mui/material/TextField';
 
 export interface IBook {
     id: string,
@@ -50,9 +52,9 @@ const Add = () => {
         <div>
             {loggedIn ?
                 <React.Fragment>
-                    <h2>Search for a Suggestion</h2>
-                    <div>
-                        <input type="text" value={searchTerm} onChange={handleSearch}/>
+                    <Typography variant="h4" component="div">Search for books to suggest</Typography>
+                    <div style={{marginTop: "20px", marginBottom: "20px"}}>
+                        <TextField fullWidth id="filled-search" label="Start searching" type="search" variant="outlined" onChange={handleSearch}/>
                     </div>
                     <BookList books={books} showAddAction="true"/>
                 </React.Fragment>
