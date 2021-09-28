@@ -61,12 +61,12 @@ const Home = () => {
                 <React.Fragment>
                     <div>
                         <Link href="/users/register">
-                            <Button variant="text">Register</Button>
+                            <Button variant="contained">Register</Button>
                         </Link>
                     </div>
-                    <div>
+                    <div style={{marginTop:"10px"}}>
                         <Link href="/users/login">
-                            <Button variant="text">Login</Button>
+                            <Button variant="contained">Login</Button>
                         </Link>
                     </div>
                     <Typography variant="subtitle2">(Use test@test.com/test123 to log on as guest)</Typography>
