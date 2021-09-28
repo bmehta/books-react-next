@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import fire from '../../config/fire-config';
+import fire from '../../components/Fire';
 import Link from 'next/link';
 
 const Search = () => {
@@ -12,7 +12,7 @@ const Search = () => {
             "searchTerm": searchTerm
         });
         setSearchResults([{id: 'id1', title: 'title1'}, {id: 'id2', title: 'title2'}]);
-        fire.firestore()
+        fire().firestore()
             .collection('books')
             .where("title", "==", searchTerm )
             .onSnapshot(snap => {
