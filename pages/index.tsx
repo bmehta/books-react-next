@@ -73,13 +73,16 @@ const Home = () => {
                 </React.Fragment>
                 :
                 <React.Fragment>
-                    <Link href="/books/add">
-                        <Button variant="contained">Add a Suggestion</Button>
-                    </Link>
-                    &nbsp;&nbsp;
-                    <Link href="/books/search">
-                        <Button variant="contained">Search Current Suggestions</Button>
-                    </Link>
+                    <div>
+                        <Link href="/books/add">
+                            <Button variant="contained">Add a Suggestion</Button>
+                        </Link>
+                    </div>
+                    <div style={{marginTop:"10px"}}>
+                        <Link href="/books/search">
+                            <Button variant="contained">Search Current Suggestions</Button>
+                        </Link>
+                    </div>
                     <Button onClick={handleLogout} variant="text">Log out</Button>
                     <div style={{marginTop: "10px", marginBottom: "10px"}}>
                         <Typography variant="h4" component="div">Current Book Suggestions</Typography>
