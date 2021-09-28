@@ -1,5 +1,6 @@
 # What is it?
-Project to manage book suggestions with React, Next, Firebase and Google Books API. It uses Vercel for deployments.
+A project to manage book suggestions with React, Next, Firebase and Google Books API. 
+It uses Vercel for environment variables and deployments.
 
 # Demo
 https://books-bmehta.vercel.app/
