@@ -4,9 +4,6 @@ TODOS
 Short term
 - is search.tsx needed anymore? same with CreateBook.tsx
 - disable adding duplicate books
-- navigation/breadcrumbs or a back link
-- styling for login/registration and search/add components
-- sort order of books by added date?
 - pagination
 
 

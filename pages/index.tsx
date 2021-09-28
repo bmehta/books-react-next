@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import Typography from '@mui/material/Typography';
 import fire from '../components/Fire';
 import BookList from '../components/BookList';
+import Button from '@mui/material/Button';
 
 
 const Home = () => {
@@ -52,30 +54,35 @@ const Home = () => {
                     content="minimum-scale=1, initial-scale=1, width=device-width"
                 />
             </Head>
-            <h1>Books! A person's best friends</h1>
+            <Typography variant="h3" component="div">Books! Our best friends!</Typography>
             {notification}
             {!loggedIn
                 ?
-                <div>
-                    <Link href="/users/register">
-                        <a>Register</a>
-                    </Link> |
-                    <Link href="/users/login">
-                        <a> Login</a>
-                    </Link>
-                    <div>(Use test@test.com/test123 to log on as guest)</div>
-                </div>
+                <React.Fragment>
+                    <div>
+                        <Link href="/users/register">
+                            <Button variant="text">Register</Button>
+                        </Link>
+                    </div>
+                    <div>
+                        <Link href="/users/login">
+                            <Button variant="text">Login</Button>
+                        </Link>
+                    </div>
+                    <Typography variant="subtitle2">(Use test@test.com/test123 to log on as guest)</Typography>
+                </React.Fragment>
                 :
-                <div>
-                    <button onClick={handleLogout}>Logout</button>
-                    &nbsp;&nbsp;
+                <React.Fragment>
                     <Link href="/books/add">
-                        <a>Add a Suggestion</a>
+                        <Button variant="contained">Add a Suggestion</Button>
                     </Link>
-                    <h1>Books Suggestions</h1>
+                    <Button onClick={handleLogout} variant="text">Log out</Button>
+                    <div style={{marginTop: "10px", marginBottom: "10px"}}>
+                        <Typography variant="h4" component="div">Current Book Suggestions</Typography>
+                    </div>
                     <BookList books={books} showDeleteAction="true"/>
 
-                </div>
+                </React.Fragment>
             }
 
         </div>

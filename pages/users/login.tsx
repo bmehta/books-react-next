@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import fire from '../../components/Fire';
+import Typography from '@mui/material/Typography';
 
 import { useRouter } from 'next/router'
 const Login = () => {
@@ -55,6 +56,9 @@ const Login = () => {
             </div>
             <div>
                 <Button onClick={handleLogin} variant="contained" style={{marginLeft: "10px"}}>Login</Button>
+            </div>
+            <div style={{marginLeft: "10px", marginTop: "10px"}}>
+                <Typography variant="subtitle2">(Use test@test.com/test123 to log on as guest)</Typography>
             </div>
         </Box>
     )

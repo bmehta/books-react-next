@@ -4,6 +4,7 @@ import Link from 'next/link';
 import fire from '../../components/Fire';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 export interface IBook {
     id: string,
@@ -53,6 +54,9 @@ const Add = () => {
             {loggedIn ?
                 <React.Fragment>
                     <Typography variant="h4" component="div">Search for books to suggest</Typography>
+                    <Link href="/">
+                        <Button variant="contained">Back to Suggestions</Button>
+                    </Link>
                     <div style={{marginTop: "20px", marginBottom: "20px"}}>
                         <TextField fullWidth id="filled-search" label="Start searching" type="search" variant="outlined" onChange={handleSearch}/>
                     </div>
