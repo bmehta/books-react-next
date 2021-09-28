@@ -2,11 +2,10 @@
 TODOS
 
 Short term
-- is search.tsx needed anymore? same with CreateBook.tsx
 - disable adding duplicate books
 - pagination
 
 
 Long term
 - Stop initializing firebase at all times
--
+- Firestore doesn't allow "like" searches - any alternatives to that?
