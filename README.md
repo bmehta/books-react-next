@@ -1,10 +1,10 @@
-# books-react-next
-Project to manage books with React, Next, Firestore/Firebase and Google Books API.
+# What is it?
+Project to manage book suggestions with React, Next, Firebase and Google Books API. It uses Vercel for deployments.
 
 # Demo
 https://books-bmehta.vercel.app/
 
-# Local SETUP
+# Local setup
 - git clone the repo
 - Run `npm i -g vercel`
 - Run `vercel env pull`. This will create a .env file on your local with variables that get exposed with process.env.
