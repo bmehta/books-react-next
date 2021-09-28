@@ -13,6 +13,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import fire from "../config/fire-config";
 
+
 const Book = (props): JSX.Element => {
     const [ toastMessage, setToastMessage ] = useState('');
     const [ open, setOpen ] = useState(false);
@@ -100,17 +101,17 @@ const Book = (props): JSX.Element => {
                     <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
                         { showPreviewAction &&
                             <IconButton aria-label="preview" onClick={handlePreview}>
-                                <PreviewIcon></PreviewIcon>
+                                <PreviewIcon/>
                             </IconButton>
                         }
                         { showAddAction &&
                             <IconButton aria-label="add" onClick={handleAdd}>
-                                <AddIcon></AddIcon>
+                                <AddIcon/>
                             </IconButton>
                         }
                         { showDeleteAction &&
                         <IconButton aria-label="delete" onClick={handleDelete}>
-                            <DeleteIcon></DeleteIcon>
+                            <DeleteIcon/>
                         </IconButton>
                         }
                     </Box>

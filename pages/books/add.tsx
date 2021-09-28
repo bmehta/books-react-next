@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import fire from '../../config/fire-config';
-import Book from '../../components/Book';
+import BookList from '../../components/BookList';
 
 export interface IBook {
     id: string,
@@ -13,19 +12,6 @@ const Add = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
     const [books, setBooks] = useState<IBook[]>([]);
-
-    const handleAdd = async (event, book) => {
-        event.preventDefault();
-        console.log(JSON.stringify(book));
-
-        const volumeId = book.id;
-        const { authors = [], previewLink = '', publisher ='', thumbnail = '', title = '' } = book;
-
-        await fire.firestore()
-            .collection('books')
-            .add({ volumeId, authors, previewLink, publisher, thumbnail, title });
-
-    };
 
     const handleSearch = async (event) => {
         event.preventDefault();
@@ -54,11 +40,7 @@ const Add = () => {
             <div>
                 <input type="text" value={searchTerm} onChange={handleSearch}/>
             </div>
-            <div>
-                {books.map(book =>
-                    <Book key={book.id} book={book} showAddAction="true"/>
-                )}
-            </div>
+            <BookList books={books} showAddAction="true"/>
         </div>
     )
 };

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import fire from '../config/fire-config';
-import Book from '../components/Book';
+import BookList from '../components/BookList';
 
 
 const Home = () => {
@@ -70,11 +70,7 @@ const Home = () => {
                         <a>Add a Suggestion</a>
                     </Link>
                     <h1>Books Suggestions</h1>
-                    <div>
-                    {books.map(book =>
-                        <Book key={book.id} book={book} showDeleteAction="true"></Book>
-                    )}
-                    </div>
+                    <BookList books={books} showDeleteAction="true"/>
 
                 </div>
             }
