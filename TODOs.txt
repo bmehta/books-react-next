@@ -4,6 +4,7 @@ TODOS
 Short term
 - disable adding duplicate books
 - pagination
+- Repurpose [id].tsx to show the embed of the book or something or just delete it.
 
 
 Long term
