@@ -1,5 +1,5 @@
 # books-react-next
-Project to manage books with React, Next, Firestore/Firebase and Google Books API
+Project to manage books with React, Next, Firestore/Firebase and Google Books API.
 
 # Demo
 https://books-bmehta.vercel.app/
