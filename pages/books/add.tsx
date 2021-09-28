@@ -63,7 +63,7 @@ const Add = () => {
                     <BookList books={books} showAddAction="true"/>
                 </React.Fragment>
             :
-                <Link href="../" color="inherit">Please login or register</Link>
+                <Link href="../">Please login or register</Link>
             }
         </div>
     )
