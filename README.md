@@ -1,4 +1,4 @@
-# What is it?
+# What is this?
 A project to manage book suggestions with React, Next, Firebase and Google Books API. 
 It uses Vercel for environment variables and deployments.
 
