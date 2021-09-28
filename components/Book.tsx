@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -12,6 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
 import fire from './Fire';
+import firebase from 'firebase';
 
 
 const Book = (props): JSX.Element => {
@@ -30,9 +30,11 @@ const Book = (props): JSX.Element => {
         const volumeId = book.id;
         const { authors = [], previewLink = '', publisher ='', thumbnail = '', title = '' } = book;
 
+        const dateCreated = firebase.firestore.Timestamp.now();
+
         await fire().firestore()
             .collection('books')
-            .add({ volumeId, authors, previewLink, publisher, thumbnail, title });
+            .add({ volumeId, authors, previewLink, publisher, thumbnail, title, dateCreated });
 
         setToastMessage('Added');
         setOpen(true);

@@ -22,12 +22,14 @@ const Home = () => {
     useEffect(() => {
         fire().firestore()
             .collection('books')
+            .orderBy('dateCreated')
+            .limitToLast(1000)
             .onSnapshot(snap => {
                 const books = snap.docs.map(doc => ({
                     id: doc.id,
                     ...doc.data()
                 }));
-                setBooks(books);
+                setBooks(books.reverse());
             });
     }, []);
 

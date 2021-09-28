@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import fire from '../../config/fire-config';
+import fire from '../../components/Fire';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -17,7 +17,7 @@ const Book = (props): JSX.Element => {
             "authors": authors
         });
 
-        await fire.firestore()
+        await fire().firestore()
             .collection('books')
             .doc(props.book.id)
             .delete();
@@ -31,7 +31,7 @@ const Book = (props): JSX.Element => {
             "authors": authors
         });
 
-        await fire.firestore()
+        await fire().firestore()
             .collection('books')
             .doc(props.book.id)
             .update({title, authors});
@@ -65,7 +65,7 @@ const Book = (props): JSX.Element => {
 };
 export const getServerSideProps = async ({ query }) => {
     const content = { title: null, authors: [] };
-    await fire.firestore()
+    await fire().firestore()
         .collection('books')
         .doc(query.id)
         .get()
