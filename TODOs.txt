@@ -8,14 +8,17 @@ TODO:
 *- Books API - key
 *- Editing books
 *- Make the model as book suggestions instead of "Books I read"?
-- spacing between cards
-- confirmation on add and delete
+*- spacing between cards
+*- confirmation on add and delete
 - is search.tsx needed anymore? same with CreateBook.tsx
 - disable adding duplicate books
-- Add auth on all pages
+*- Add auth on all pages
+- navigation/breadcrumbs or a back link
+- styling for login/registration and search/add components
 - Add restrictions for test@test.com on all pages
-- sort order of books
+- sort order of books by added date?
 - pagination
+
 
 Done:
 *- Firebase authentication

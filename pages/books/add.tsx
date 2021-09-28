@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import BookList from '../../components/BookList';
+import Link from 'next/link';
+import fire from "../../config/fire-config";
 
 export interface IBook {
     id: string,
@@ -12,6 +14,16 @@ const Add = () => {
 
     const [searchTerm, setSearchTerm] = useState('');
     const [books, setBooks] = useState<IBook[]>([]);
+
+    const [loggedIn, setLoggedIn] = useState(false);
+    fire.auth()
+        .onAuthStateChanged((user) => {
+            if (user) {
+                setLoggedIn(true)
+            } else {
+                setLoggedIn(false)
+            }
+        });
 
     const handleSearch = async (event) => {
         event.preventDefault();
@@ -36,11 +48,17 @@ const Add = () => {
     };
     return (
         <div>
-            <h2>Search for a Suggestion</h2>
-            <div>
-                <input type="text" value={searchTerm} onChange={handleSearch}/>
-            </div>
-            <BookList books={books} showAddAction="true"/>
+            {loggedIn ?
+                <React.Fragment>
+                    <h2>Search for a Suggestion</h2>
+                    <div>
+                        <input type="text" value={searchTerm} onChange={handleSearch}/>
+                    </div>
+                    <BookList books={books} showAddAction="true"/>
+                </React.Fragment>
+            :
+                <Link href="../" color="inherit">Please login or register</Link>
+            }
         </div>
     )
 };
