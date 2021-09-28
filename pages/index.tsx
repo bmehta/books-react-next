@@ -70,13 +70,11 @@ const Home = () => {
                         <a>Add a Suggestion</a>
                     </Link>
                     <h1>Books Suggestions</h1>
-                    <ul>
                     {books.map(book =>
-                        <li key={book.id}>
-                            <Book book={book}></Book>
-                        </li>
+                        <div key={book.id}>
+                            <Book book={book} showDeleteAction="true"></Book>
+                        </div>
                     )}
-                    </ul>
                 </div>
             }
 

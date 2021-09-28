@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import fire from '../../config/fire-config';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import Book from '../../components/Book';
 
 export interface IBook {
@@ -49,7 +47,7 @@ const Add = () => {
             });
             setBooks(books);
         }
-    }
+    };
     return (
         <div>
             <h2>Search for a Suggestion</h2>
@@ -59,7 +57,7 @@ const Add = () => {
             <ul>
                 {books.map(book =>
                     <li key={book.id}>
-                        <Book book={book}/>
+                        <Book book={book} showAddAction="true"/>
                         <button onClick={(event) => handleAdd(event, book)}>Add</button>
                     </li>
                 )}
