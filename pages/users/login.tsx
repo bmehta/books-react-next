@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import fire from '../../config/fire-config';
+import fire from '../../components/Fire';
+
 import { useRouter } from 'next/router'
 const Login = () => {
     const [username, setUsername] = useState('');
@@ -8,7 +9,7 @@ const Login = () => {
     const router = useRouter();
     const handleLogin = (e) => {
         e.preventDefault();
-        fire.auth()
+        fire().auth()
             .signInWithEmailAndPassword(username, password)
             .catch((err) => {
                 console.log(err.code, err.message);

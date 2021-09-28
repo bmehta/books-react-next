@@ -11,7 +11,7 @@ import PreviewIcon from '@mui/icons-material/Preview';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
 import Snackbar from '@mui/material/Snackbar';
-import fire from "../config/fire-config";
+import fire from './Fire';
 
 
 const Book = (props): JSX.Element => {
@@ -30,7 +30,7 @@ const Book = (props): JSX.Element => {
         const volumeId = book.id;
         const { authors = [], previewLink = '', publisher ='', thumbnail = '', title = '' } = book;
 
-        await fire.firestore()
+        await fire().firestore()
             .collection('books')
             .add({ volumeId, authors, previewLink, publisher, thumbnail, title });
 
@@ -41,7 +41,7 @@ const Book = (props): JSX.Element => {
     const handleDelete = async () => {
         console.log(JSON.stringify(book)); //TODO: remove this
 
-        await fire.firestore()
+        await fire().firestore()
             .collection('books')
             .doc(book.id)
             .delete();

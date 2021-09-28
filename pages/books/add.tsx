@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BookList from '../../components/BookList';
 import Link from 'next/link';
-import fire from "../../config/fire-config";
+import fire from '../../components/Fire';
 
 export interface IBook {
     id: string,
@@ -16,7 +16,7 @@ const Add = () => {
     const [books, setBooks] = useState<IBook[]>([]);
 
     const [loggedIn, setLoggedIn] = useState(false);
-    fire.auth()
+    fire().auth()
         .onAuthStateChanged((user) => {
             if (user) {
                 setLoggedIn(true)

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import fire from '../config/fire-config';
+import fire from '../components/Fire';
 import BookList from '../components/BookList';
 
 
@@ -9,7 +9,8 @@ const Home = () => {
     const [books, setBooks] = useState([]);
     const [notification, setNotification] = useState('');
     const [loggedIn, setLoggedIn] = useState(false);
-    fire.auth()
+
+    fire().auth()
         .onAuthStateChanged((user) => {
             if (user) {
                 setLoggedIn(true)
@@ -19,7 +20,7 @@ const Home = () => {
         });
 
     useEffect(() => {
-        fire.firestore()
+        fire().firestore()
             .collection('books')
             .onSnapshot(snap => {
                 const books = snap.docs.map(doc => ({
@@ -31,7 +32,7 @@ const Home = () => {
     }, []);
 
     const handleLogout = () => {
-        fire.auth()
+        fire().auth()
             .signOut()
             .then(() => {
                 setNotification('Logged out');

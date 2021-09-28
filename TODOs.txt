@@ -1,24 +1,15 @@
 
-TODO:
-*- Org/api/structure of the project - move book[id] to add/edit
-*- Typescript
-- Material-UI
-*- finish search and add
-*- decide how to store searched books so tehy can be referenced in the listing - either by id or just store all params and access statically
-*- Books API - key
-*- Editing books
-*- Make the model as book suggestions instead of "Books I read"?
-*- spacing between cards
-*- confirmation on add and delete
+TODOS
+
+Short term
 - is search.tsx needed anymore? same with CreateBook.tsx
 - disable adding duplicate books
-*- Add auth on all pages
 - navigation/breadcrumbs or a back link
 - styling for login/registration and search/add components
-- Add restrictions for test@test.com on all pages
 - sort order of books by added date?
 - pagination
 
 
-Done:
-*- Firebase authentication
+Long term
+- Stop initializing firebase at all times
+-
